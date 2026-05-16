@@ -1,5 +1,5 @@
 import pygame
-from background import Map
+from game_objects.background import Map
 
 pygame.init()
 
