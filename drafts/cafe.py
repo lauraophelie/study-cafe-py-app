@@ -1,6 +1,6 @@
 import pygame
-from background import Map
-from sprite import Sprite 
+from game_objects.background import Map
+from game_objects.sprite import Sprite 
 import random
 
 pygame.init()
