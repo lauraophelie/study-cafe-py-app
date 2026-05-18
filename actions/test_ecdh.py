@@ -47,7 +47,7 @@ client_shared_secret = client_private_key.exchange(
     host_public_key
 )
 
-host_shared_secret == client_shared_secret
+# host_shared_secret == client_shared_secret
 
 # use HKDF to derive a real encryption key
 derived_key = HKDF(

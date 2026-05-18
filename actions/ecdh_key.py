@@ -6,6 +6,12 @@ from cryptography.hazmat.primitives.kdf.hkdf import HKDF
 
 import base64
 
+def exchange_keys(host_private_key, exchanged_public_key):
+    return host_private_key.exchange(
+        ec.ECDH(),
+        exchanged_public_key
+    )
+
 def get_encrypted_group_key(secure_channel, group_key):
     return secure_channel.encrypt(group_key)
 
