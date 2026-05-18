@@ -7,6 +7,11 @@ Study cafe is a game-styled study app, made in Python, that simulates the look o
 - Pixel art : aseprite
 - Library used (in python): fernet, json, socket, pygame
 
+## 📂 Key concepts used
+- Socket programming 
+- Hybrid cryptography : asymetric & symetric cryptography both used to ensure a secure communication on a public channel
+- Game development : displaying the sprite on the window, handling collisions, adding objetcs onto the background
+
 ## 📂 Key features
 
 ### Starting a study session 
