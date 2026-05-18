@@ -7,16 +7,13 @@ class StudyInviteLink:
         self.socket = socket
         self.student_name = student_name
         self.session_id = session_id
-    
-    # def generate_link(self):
-    #     secret_key = Fernet.generate_key()
-    #     fernet_key = Fernet(secret_key)
 
-    #     link_data = self.process_link_data()
-    #     study_link_data = self.process_study_link(link_data)
-    #     study_link = fernet_key.encrypt(study_link_data)
+    def generate_invite_link(self, group_key):
+        link_data = self.process_invite_link_data()
+        study_link_data = self.process_invite_link(link_data)
+        study_link = group_key.encrypt(study_link_data)
 
-    #     return study_link
+        return study_link
     
     def process_invite_link(self, link_data):
         link_data_json = json.dumps(link_data)

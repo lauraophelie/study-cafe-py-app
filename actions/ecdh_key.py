@@ -6,6 +6,22 @@ from cryptography.hazmat.primitives.kdf.hkdf import HKDF
 
 import base64
 
+'''
+steps to follow : 
+- host creates room : 
+    * open_study_session() = group_key, group_cipher
+- host generates dh keys (private, public)
+    * generate_ecdh_key_pair() = private_key, public_key
+- generate invite token
+
+- client joins -> generate dh keys (private, public)
+- host & client exchange public keys
+
+- derive from the same shared key
+- get derived key from the shared secret 
+- host sends group session key securely 
+'''
+
 def exchange_keys(host_private_key, exchanged_public_key):
     return host_private_key.exchange(
         ec.ECDH(),
