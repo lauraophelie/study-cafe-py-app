@@ -17,7 +17,7 @@ print("Study room opened")
 host_private_key = ec.generate_private_key(
     ec.SECP256R1()
 )
-host_public_key = host_private_key.public()
+host_public_key = host_private_key.public_key()
 
 # invite token
 invite_token = {
