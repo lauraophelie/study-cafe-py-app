@@ -2,33 +2,28 @@ import socket
 import random
 
 def connect_to_server():
-    sock = socket.socket()
-    port_number = random.randint(1000, 8124)
+    host_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    host_name = socket.gethostname()
+    port_number = random.randint(1000, 5000)
+    print(port_number)
 
-    sock.bind(('', port_number))
-    sock.listen(5)
+    host_socket.bind((host_name, port_number))
+    host_socket.listen(5)
+
+    conn, address = host_socket.accept()
+    print(f"Connection from : {address}")
 
     while True:
-        conn, addr = sock.accept()
-        print("Connection from ", addr)
+        data = conn.recv(1024).decode()
 
-        conn.send("Thank you for joining the study session :)".encode())
-        conn.close()
+        if not data:
+            break
 
-        break
+        print(f"Data from connected user : {data}")
+        data = input("---")
+        conn.send(data.encode())
+    
+    conn.close()
 
-# sock = socket.socket()
-# port = 8124
-
-# sock.bind(('', port))
-# print("Socket attached to port %s" %(port))
-
-# sock.listen(5)
-
-# while True:
-#     conn, addr = sock.accept()
-#     print("Connection from ", addr)
-
-#     conn.send("Thank you for connecting".encode())
-#     conn.close()
-#     break
+# if __name__ == '__main__':
+#     connect_to_server()
