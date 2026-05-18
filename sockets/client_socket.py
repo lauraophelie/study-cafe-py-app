@@ -15,5 +15,5 @@ def connect_to_host_server(port_number):
 
     client_socket.close()
 
-# if __name__ == '__main__':
-#     connect_to_host_server(3118)
+if __name__ == '__main__':
+    connect_to_host_server(2734)
