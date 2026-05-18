@@ -10,23 +10,28 @@ import base64
 steps to follow : 
 - host creates room : 
     * open_study_session() = group_key, group_cipher
+
 - host generates dh keys (private, public)
-    * generate_ecdh_key_pair() = private_key, public_key
+    * generate_ecdh_key_pair() = host_private_key, host_public_key
+    * save host_public_key_file
+
 - generate invite token
+    * StudyInviteLink.generate_invite_link(group_cipher)
 
 - client joins -> generate dh keys (private, public)
+    * generate_ecdh_key_pair() = client_private_key, client_public_key
+    * save client_public_key_file
 - host & client exchange public keys
 
-- derive from the same shared key
-- get derived key from the shared secret 
-- host sends group session key securely 
-'''
+- derive from the same shared key : get the shared_key
+    * exchange_keys(host_private_key, client_public_key) = host_shared_key
 
-def exchange_keys(host_private_key, exchanged_public_key):
-    return host_private_key.exchange(
-        ec.ECDH(),
-        exchanged_public_key
-    )
+- get derived key from the shared secret 
+    * get_derived_key(host_shared_key) = secure_channel
+
+- host sends group session key securely 
+    * get_encrypted_group_key(secure_channel, group_key)
+'''
 
 def get_encrypted_group_key(secure_channel, group_key):
     return secure_channel.encrypt(group_key)
@@ -43,6 +48,12 @@ def get_derived_key(host_shared_secret):
     secure_channel = Fernet(fernet_key)
 
     return secure_channel
+
+def exchange_keys(host_private_key, exchanged_public_key):
+    return host_private_key.exchange(
+        ec.ECDH(),
+        exchanged_public_key
+    )
 
 def save_public_key(private_key, public_key_name):
     pem_public_key = private_key.public_key().public_bytes(
