@@ -17,7 +17,7 @@ print("Study room opened")
 host_private_key = ec.generate_private_key(
     ec.SECP256R1()
 )
-host_public_key = host_private_key.public()
+host_public_key = host_private_key.public_key()
 
 # invite token
 invite_token = {
@@ -47,7 +47,7 @@ client_shared_secret = client_private_key.exchange(
     host_public_key
 )
 
-host_shared_secret == client_shared_secret
+# host_shared_secret == client_shared_secret
 
 # use HKDF to derive a real encryption key
 derived_key = HKDF(
