@@ -64,6 +64,15 @@ def save_public_key(private_key, public_key_name):
     public_key_file.write(pem_public_key.decode())
     public_key_file.close()
 
+def deserialize_public_key_bytes(public_key_bytes):
+    return serialization.load_pem_public_key(public_key_bytes)
+
+def convert_public_key_to_bytes(public_key):
+    return public_key.public_bytes(
+        encoding = serialization.Encoding.PEM,
+        format = serialization.PublicFormat.SubjectPublicKeyInfo
+    )
+
 def generate_ecdh_key_pair():
     private_key = ec.generate_private_key(
         ec.SECP256R1()

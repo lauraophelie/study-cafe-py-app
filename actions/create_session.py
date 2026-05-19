@@ -3,6 +3,7 @@ import random
 import threading
 
 from cryptography.fernet import Fernet
+from actions.ecdh_key import convert_public_key_to_bytes, deserialize_public_key_bytes, exchange_keys, generate_ecdh_key_pair, get_derived_key, get_encrypted_group_key
 from actions.study_invite_link import StudyInviteLink
 
 def start_study_session(student_name, duration=60):
@@ -10,14 +11,21 @@ def start_study_session(student_name, duration=60):
     print(port_number)
 
     study_invite = create_study_invite(student_name, host_socket)
+    group_key, group_cipher = open_study_session()
+    private_key, public_key = generate_ecdh_key_pair()
+
+    study_invite.generate_invite_link(group_cipher)
 
     while True:
         conn, address = host_socket.accept()
 
-        thread = threading.Thread(target=handle_incoming_user, args=(conn, address))
+        thread = threading.Thread(target=handle_incoming_user, args=(conn, address, public_key, private_key, group_key))
         thread.start()
 
         print(f"Active connections : {threading.activeCount() - 1}")
+
+def share_study_session():
+    pass
 
 def create_study_invite(student_name, socket):
     return StudyInviteLink(
@@ -35,19 +43,29 @@ def create_host_socket():
 
     return host_socket, port_number
 
-def handle_incoming_user(conn, address):
+def handle_incoming_user(conn, address, public_key, private_key, group_key):
     print(f"New connection from {address}")
-    while True:
-        try:
-            message = conn.recv(1024).decode()
+    
+    public_key_bytes = convert_public_key_to_bytes(public_key)
+    conn.send(public_key_bytes)
 
-            if message:
-                print(f"Message from {address}: {message}")
-                conn.send(message.encode())
-        except Exception as e:
-            print(f"Error with connection from {address}: {e}")
-            break
-    conn.close()
+    client_public_key_bytes = conn.recv(4096)
+    client_public_key = deserialize_public_key_bytes(client_public_key_bytes)
+
+    shared_secret = exchange_keys(private_key, client_public_key)
+    secure_channel = get_derived_key(shared_secret)
+
+    enc_group_key = get_encrypted_group_key(secure_channel, group_key)
+    conn.send(enc_group_key)
+
+    # while True:
+    #     try:
+    #         client_public_key = conn.recv(4096)
+    #         print(f"Received client public key : {client_public_key}")
+    #     except Exception as e:
+    #         print(f"Error with connection from {address}: {e}")
+    #         break
+    # conn.close()
 
 def open_study_session():
     group_key = Fernet.generate_key()
