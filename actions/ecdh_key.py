@@ -36,7 +36,7 @@ steps to follow :
 def get_encrypted_group_key(secure_channel, group_key):
     return secure_channel.encrypt(group_key)
 
-def get_derived_key(host_shared_secret):
+def derive_secure_channel(host_shared_secret):
     derived_key = HKDF(
         algorithm=hashes.SHA256(),
         length=32,
