@@ -1,16 +1,19 @@
 import socket
 
-# sock_clt = socket.socket()
-# port = 8124
+def connect_to_host_server(port_number):
+    client_socket = socket.socket()
+    client_socket.connect((socket.gethostname(), port_number))
 
-# sock_clt.connect(('127.0.0.1', port))
-# print(sock_clt.recv(1024).decode())
-# sock_clt.close()
+    message = input("---")
 
-def create_client_socket():
-    return socket.socket()
+    while message.lower().strip() != 'bye':
+        client_socket.send(message.encode())
+        data = client_socket.recv(1024).decode()
 
-def connect_client_to_server(hostname, port):
-    sock_clt = create_client_socket()
-    sock_clt.connect((hostname, port))
-    sock_clt.close
+        print(f"Received from server : {data}")
+        message = input("---")
+
+    client_socket.close()
+
+if __name__ == '__main__':
+    connect_to_host_server(2734)

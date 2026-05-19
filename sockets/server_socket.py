@@ -1,34 +1,53 @@
 import socket
 import random
+import threading
+
+def handle_incoming_client(conn, address):
+    print(f"New connection from {address}")
+    while True:
+        try:
+            message = conn.recv(1024).decode()
+
+            if message:
+                print(f"Message from {address}: {message}")
+                conn.send(message.encode())
+        except Exception as e:
+            print(f"Error with connection from {address}: {e}")
+            break
+    conn.close()
 
 def connect_to_server():
-    sock = socket.socket()
-    port_number = random.randint(1000, 8124)
+    host_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    host_name = socket.gethostname()
+    port_number = random.randint(1000, 5000)
 
-    sock.bind(('', port_number))
-    sock.listen(5)
+    print(port_number)
+
+    host_socket.bind((host_name, port_number))
+    host_socket.listen(5)
 
     while True:
-        conn, addr = sock.accept()
-        print("Connection from ", addr)
+        conn, address = host_socket.accept()
 
-        conn.send("Thank you for joining the study session :)".encode())
-        conn.close()
+        thread = threading.Thread(target=handle_incoming_client, args=(conn, address))
+        thread.start()
 
-        break
+        print(f"Active connections : {threading.activeCount() - 1}")
 
-# sock = socket.socket()
-# port = 8124
+    # conn, address = host_socket.accept()
+    # print(f"Connection from : {address}")
 
-# sock.bind(('', port))
-# print("Socket attached to port %s" %(port))
+    # while True:
+    #     data = conn.recv(1024).decode()
 
-# sock.listen(5)
+    #     if not data:
+    #         break
 
-# while True:
-#     conn, addr = sock.accept()
-#     print("Connection from ", addr)
+    #     print(f"Data from connected user : {data}")
+    #     data = input("---")
+    #     conn.send(data.encode())
+    
+    # conn.close()
 
-#     conn.send("Thank you for connecting".encode())
-#     conn.close()
-#     break
+# if __name__ == '__main__':
+#     connect_to_server()
