@@ -3,14 +3,15 @@ from game_objects.background import Map
 
 pygame.init()
 
-window = pygame.display.set_mode((640, 360))
+window = pygame.display.set_mode((640, 384))
 pygame.display.set_caption("Study café")
 
 sprite_img_path = "assets/sprites/"
 window_map_path = "assets/map/"
 
 sprites = [
-    pygame.image.load(f"{sprite_img_path}wall-tile.png").convert_alpha(),
+    pygame.image.load(f"{sprite_img_path}wall-corner.png").convert_alpha(),
+    pygame.image.load(f"{sprite_img_path}walltile-sprite.png").convert_alpha(),
     pygame.image.load(f"{sprite_img_path}woodtile-sprite.png").convert_alpha()
 ]
 window_map = Map(f"{window_map_path}menu_map.csv", sprites, tile_size=32)
