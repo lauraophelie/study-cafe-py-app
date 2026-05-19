@@ -11,11 +11,11 @@ def start_study_session(student_name, duration=60):
     host_socket, port_number = create_host_socket()
     print(port_number)
 
-    study_invite = create_study_invite(student_name, host_socket)
+    # study_invite = create_study_invite(student_name, host_socket)
     group_key, group_cipher = open_study_session()
     private_key, public_key = generate_ecdh_key_pair()
 
-    study_invite.generate_invite_link(group_cipher)
+    # study_invite.generate_invite_link(group_cipher)
 
     while True:
         conn, address = host_socket.accept()
