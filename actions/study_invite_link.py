@@ -3,8 +3,9 @@ from cryptography.fernet import Fernet
 import json
 
 class StudyInviteLink:
-    def __init__(self, socket, student_name, session_id):
+    def __init__(self, socket, port_number, student_name, session_id=''):
         self.socket = socket
+        self.port_number = port_number
         self.student_name = student_name
         self.session_id = session_id
 
@@ -29,6 +30,7 @@ class StudyInviteLink:
         link_data = {
             "user_id": self.student_name,
             "session_id": self.session_id,
+            "server_port_number": self.port_number,
             "server_host": hostname,
             "server_ip": addr_ip,
             "date_time_creation": current_datetime
