@@ -6,3 +6,4 @@ class Popup(tk.Toplevel):
         self.geometry(popup_dimension)
         self.title(popup_title)
         self.configure(bg=background)
+        self.images = {}

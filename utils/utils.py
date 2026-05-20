@@ -1,11 +1,15 @@
 import tkinter as tk
 
-def create_stroked_text(canvas, x, y, text, stroke_color, fill_color, font, font_name, font_size, stroke_width=2, anchor="ne"):
-    text_font = font.Font(
-        family=font_name,
-        size=font_size, 
-        weight="bold"
-    )
+def create_stroked_text(
+    canvas, 
+    x, y, 
+    text, 
+    stroke_color, 
+    fill_color, 
+    text_font, 
+    stroke_width=2, 
+    anchor="ne"
+):
     for dx in (-stroke_width, 0, stroke_width):
         for dy in (-stroke_width, 0, stroke_width):
             if dx != 0 or dy != 0:
