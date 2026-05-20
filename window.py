@@ -57,11 +57,15 @@ run = True
 clock = pygame.time.Clock()
 
 while run:
-    for event in pygame.event.get():
+    events = pygame.event.get()
+    
+    for event in events:
         if event.type == pygame.QUIT:
             run = False
     
     window_map.render(window)
+
+    all_objects_sprites.update(events)
     all_objects_sprites.draw(window)
 
     pygame.display.flip()
