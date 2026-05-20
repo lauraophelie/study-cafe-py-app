@@ -58,8 +58,6 @@ def create_session():
     # create_sess.withdraw()
     # create_sess.destroy()
 
-    pass
-
 def join_study_session():
     print("join study session \n")
 
