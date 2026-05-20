@@ -11,6 +11,9 @@ def start_study_session(student_name, duration=60):
     host_socket, port_number = create_host_socket()
     print(port_number)
 
+    print(student_name)
+    print(duration)
+
     # study_invite = create_study_invite(student_name, host_socket)
     group_key, group_cipher = open_study_session()
     private_key, public_key = generate_ecdh_key_pair()
