@@ -40,16 +40,22 @@ start_button = pygame.image.load(f"{ui_sprites_path}start_button.png").convert_a
 join_button = pygame.image.load(f"{ui_sprites_path}join_button.png").convert_alpha()
 exit_button = pygame.image.load(f"{ui_sprites_path}exit_button.png").convert_alpha()
 
+def welcome_app():
+    print("welcome app \n")
+
 def create_session():
-    print("create study session")
+    print("create study session \n")
 
 def join_study_session():
-    print("join study session")
+    print("join study session \n")
 
-logo = Sprite(logo_app, 230, 70, "logo")
-start = Sprite(start_button, 225, 115, "start_session", create_session)
-join = Sprite(join_button, 225, 150, "join_session", join_study_session)
-exiting = Sprite(exit_button, 255, 195, "exit")
+def exit_app():
+    print("exit \n")
+
+logo = Sprite(logo_app, 230, 70, welcome_app, "logo")
+start = Sprite(start_button, 225, 115, create_session, "start_session", )
+join = Sprite(join_button, 225, 150, join_study_session, "join_session", )
+exiting = Sprite(exit_button, 255, 195, exit_app, "exit")
 
 all_objects_sprites.add(logo, start, join, exiting)
 
@@ -58,7 +64,7 @@ clock = pygame.time.Clock()
 
 while run:
     events = pygame.event.get()
-    
+
     for event in events:
         if event.type == pygame.QUIT:
             run = False
