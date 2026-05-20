@@ -49,6 +49,7 @@ def welcome_app():
 
 def create_session():
     root_popup = tk.Tk()
+    root_popup.overrideredirect()
     root_popup.withdraw()
 
     answer = simpledialog.askstring("Sprite Clicked","Type something:")
