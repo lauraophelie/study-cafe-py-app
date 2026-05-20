@@ -5,11 +5,15 @@ import tkinter as tk
 
 from game_objects.background import Map
 from game_objects.sprite import Sprite
+from screens.popup_session import display_create_popup
 
 pygame.init()
 
 window = pygame.display.set_mode((640, 384))
 pygame.display.set_caption("Study café")
+
+root = tk.Tk()
+root.withdraw()
 
 sprite_img_path = "assets/menu_sprites/"
 window_map_path = "assets/map/"
@@ -48,14 +52,13 @@ def welcome_app():
     print("welcome app \n")
 
 def create_session():
-    root_popup = tk.Tk()
-    root_popup.overrideredirect()
-    root_popup.withdraw()
+    return display_create_popup()
+    # create_sess.mainloop()
 
-    answer = simpledialog.askstring("Sprite Clicked","Type something:")
-    print(answer)
+    # create_sess.withdraw()
+    # create_sess.destroy()
 
-    root_popup.destroy()
+    pass
 
 def join_study_session():
     print("join study session \n")
@@ -74,6 +77,7 @@ run = True
 clock = pygame.time.Clock()
 
 while run:
+    root.update()
     events = pygame.event.get()
 
     for event in events:
@@ -89,3 +93,4 @@ while run:
     clock.tick(60)
 
 pygame.quit()
+root.destroy()
