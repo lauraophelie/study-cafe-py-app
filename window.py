@@ -1,4 +1,8 @@
+from tkinter import simpledialog
+
 import pygame
+import tkinter as tk
+
 from game_objects.background import Map
 from game_objects.sprite import Sprite
 
@@ -44,7 +48,13 @@ def welcome_app():
     print("welcome app \n")
 
 def create_session():
-    print("create study session \n")
+    root_popup = tk.Tk()
+    root_popup.withdraw()
+
+    answer = simpledialog.askstring("Sprite Clicked","Type something:")
+    print(answer)
+
+    root_popup.destroy()
 
 def join_study_session():
     print("join study session \n")
