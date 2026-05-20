@@ -5,7 +5,7 @@ Study cafe is a game-styled study app, made in Python, that simulates the look o
 ## 📂 Technologies & tools used
 - Programming language : python
 - Pixel art : aseprite
-- Library used (in python): fernet, json, socket, pygame, cryptography, tkinter
+- Library used (in python): fernet, json, socket, pygame, cryptography, tkinter, pyglet (to load fonts), pillow (for images)
 - Prototyping : Figma
 
 ## 📂 Key concepts used
