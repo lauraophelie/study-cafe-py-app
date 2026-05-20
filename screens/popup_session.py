@@ -25,6 +25,16 @@ def display_create_popup():
     )
     label_image.pack(padx=50, pady=65)
 
+    text_placeholder = "Enter your username here"
+    text_input = tk.Entry(
+        create_popup,
+        bg="#FFFFEB",
+        font=(pixelify_font, 10),
+        width=20
+    )
+    text_input.insert(0, text_placeholder)
+    text_input.pack(ipady=2)
+
     return create_popup
 
 def display_join_popup():
