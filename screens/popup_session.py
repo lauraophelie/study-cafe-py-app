@@ -30,36 +30,16 @@ def display_create_popup():
     )
     label_image.pack(pady=(40, 20))
 
-    text_placeholder = "Enter your username here"
-    text_input = tk.Entry(
-        create_popup,
-        bg="#FFFFEB",
-        fg=BORDER_COLOR,
-        insertbackground=BORDER_COLOR,
-        font=FONT_PIXEL,
-        width=20,
-        relief="flat",
-        bd=1,
-        highlightthickness=3,
-        highlightbackground=BORDER_COLOR,
-        highlightcolor=BORDER_COLOR
-    )
+    text_input = create_input_text(create_popup, BACKGROUND_COLOR)
     text_input.pack(ipady=2)
+
+    text_placeholder = "Enter your username here"
     add_input_placeholder(text_input, text_placeholder)
 
     border_frame = tk.Frame(create_popup, bg=BORDER_COLOR)
     border_frame.pack(pady=(20, 0), padx=(10, 0))
 
-    action_button = tk.Button(
-        border_frame,
-        width=15,
-        text="Create session",
-        font=FONT_PIXEL,
-        bg="#FFB697",
-        fg=BORDER_COLOR,
-        relief="solid",
-        bd=1.5,
-    )
+    action_button = create_action_button(border_frame, "Create session", "#FFB697")
     action_button.pack(ipady=2)
 
     return create_popup
@@ -78,6 +58,33 @@ def create_canvas_popup_title(popup_root):
     canvas.pack()
     
     return canvas
+
+def create_input_text(popup, bg_color):
+    return tk.Entry(
+        popup,
+        bg=bg_color,
+        fg=BORDER_COLOR,
+        insertbackground=BORDER_COLOR,
+        font=FONT_PIXEL,
+        width=20,
+        relief="flat",
+        bd=1,
+        highlightthickness=3,
+        highlightbackground=BORDER_COLOR,
+        highlightcolor=BORDER_COLOR
+    )
+
+def create_action_button(frame, text, bg_color):
+    return tk.Button(
+        frame,
+        bg=bg_color,
+        text=text,
+        font=FONT_PIXEL,
+        fg=BORDER_COLOR,
+        relief="solid",
+        bd=1.5,
+        width=15
+    )
 
 def add_input_placeholder(input_entry, placeholder):
     input_entry.insert(0, placeholder)
