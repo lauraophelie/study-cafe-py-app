@@ -6,7 +6,7 @@ from game_objects.sprite import Sprite
 sprite_img_path = "assets/sprite/"
 game_window_map = "assets/map/room_map.csv"
 
-def init_study_room():
+def load_study_room():
     sprites = init_background_sprites()
     room_map = init_room_map(sprites, game_window_map)
     game_objects_sprites = init_game_objects_sprites()
@@ -22,7 +22,11 @@ def init_background_sprites(length=12):
     return sprites
 
 def init_room_map(sprites, map_file_path):
-    return Map(map_file_path, sprites, tile_size=32)
+    return Map(
+        csv_file=map_file_path, 
+        tile_images=sprites, 
+        tile_size=32
+    )
 
 def simple_callback():
     print(f"this is a sprite")
