@@ -1,71 +1,19 @@
-from tkinter import simpledialog
-
 import pygame
 import tkinter as tk
 
-from game_objects.background import Map
-from game_objects.sprite import Sprite
-from screens.popup_session import display_create_popup
+from screens.menu_screen import load_menu_screen
+from screens.study_cafe_room import load_study_room
 
 pygame.init()
 
 window = pygame.display.set_mode((640, 384))
-pygame.display.set_caption("Study café")
+pygame.display.set_caption("Let's study together")
 
 root = tk.Tk()
 root.withdraw()
 
-sprite_img_path = "assets/menu_sprites/"
-window_map_path = "assets/map/"
-
-sprites = [
-    pygame.image.load(f"{sprite_img_path}walltile-sprite-dleft.png").convert_alpha(),
-    pygame.image.load(f"{sprite_img_path}walltile-sprite-btop.png").convert_alpha(),
-    pygame.image.load(f"{sprite_img_path}walltile-sprite-dright.png").convert_alpha(),
-    pygame.image.load(f"{sprite_img_path}walltile-sprite-bleft.png").convert_alpha(),
-    pygame.image.load(f"{sprite_img_path}walltile-sprite.png").convert_alpha(),
-    pygame.image.load(f"{sprite_img_path}walltile-sprite-bright.png").convert_alpha(),
-    pygame.image.load(f"{sprite_img_path}wood-wall-tile-bleft.png").convert_alpha(),
-    pygame.image.load(f"{sprite_img_path}wood-wall-tile.png").convert_alpha(),
-    pygame.image.load(f"{sprite_img_path}wood-wall-tile-bright.png").convert_alpha(),
-    pygame.image.load(f"{sprite_img_path}woodtile-sprite-bleft.png").convert_alpha(),
-    pygame.image.load(f"{sprite_img_path}woodtile-sprite.png").convert_alpha(),
-    pygame.image.load(f"{sprite_img_path}woodtile-sprite-bright.png").convert_alpha(),
-    pygame.image.load(f"{sprite_img_path}woodtile-sprite-dleft.png").convert_alpha(),
-    pygame.image.load(f"{sprite_img_path}woodtile-sprite-bbottom.png").convert_alpha(),
-    pygame.image.load(f"{sprite_img_path}woodtile-sprite-dright.png").convert_alpha()
-    
-]
-window_map = Map(f"{window_map_path}menu_map.csv", sprites, tile_size=64)
-
-all_objects_sprites = pygame.sprite.Group()
-
-ui_sprites_path = "assets/ui/"
-
-logo_app = pygame.image.load(f"{ui_sprites_path}study-cafe-logo.png").convert_alpha()
-
-start_button = pygame.image.load(f"{ui_sprites_path}start_button.png").convert_alpha()
-join_button = pygame.image.load(f"{ui_sprites_path}join_button.png").convert_alpha()
-exit_button = pygame.image.load(f"{ui_sprites_path}exit_button.png").convert_alpha()
-
-def welcome_app():
-    print("welcome app \n")
-
-def create_session():
-    return display_create_popup()
-
-def join_study_session():
-    print("join study session \n")
-
-def exit_app():
-    print("exit \n")
-
-logo = Sprite(logo_app, 230, 70, welcome_app, "logo")
-start = Sprite(start_button, 225, 115, create_session, "start_session", )
-join = Sprite(join_button, 225, 150, join_study_session, "join_session", )
-exiting = Sprite(exit_button, 255, 195, exit_app, "exit")
-
-all_objects_sprites.add(logo, start, join, exiting)
+menu_screen_map, menu_screen_sprites = load_menu_screen()
+study_room_map, study_room_sprites = load_study_room()
 
 run = True
 clock = pygame.time.Clock()
@@ -77,11 +25,14 @@ while run:
     for event in events:
         if event.type == pygame.QUIT:
             run = False
-    
-    window_map.render(window)
 
-    all_objects_sprites.update(events)
-    all_objects_sprites.draw(window)
+    # menu_screen_map.render(window)
+    # menu_screen_sprites.update(events)
+    # menu_screen_sprites.draw(window)
+
+    study_room_map.render(window)
+    study_room_sprites.update(events)
+    study_room_sprites.draw(window)
 
     pygame.display.flip()
     clock.tick(60)
