@@ -19,7 +19,6 @@ def start_study_session(student_name, duration=60):
     private_key, public_key = generate_ecdh_key_pair()
 
     # study_invite.generate_invite_link(group_cipher)
-
     while True:
         conn, address = host_socket.accept()
 

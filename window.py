@@ -53,10 +53,6 @@ def welcome_app():
 
 def create_session():
     return display_create_popup()
-    # create_sess.mainloop()
-
-    # create_sess.withdraw()
-    # create_sess.destroy()
 
 def join_study_session():
     print("join study session \n")

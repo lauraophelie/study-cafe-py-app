@@ -39,25 +39,20 @@ def display_create_popup():
     border_frame = tk.Frame(create_popup, bg=BORDER_COLOR)
     border_frame.pack(pady=(20, 0), padx=(10, 0))
 
-    action_button = create_action_button(border_frame, "Create session", "#FFB697")
+    action_button = create_action_button(
+        border_frame, "Create session", "#FFB697", 
+        command=lambda:get_input_text(text_input)
+    )
     action_button.pack(ipady=2)
 
     return create_popup
 
-def display_join_popup():
-    pass
+def get_input_text(input_text):
+    username = input_text.get()
+    if username == "Enter your username here":
+        username = ""
+    print(username)
 
-def create_canvas_popup_title(popup_root):
-    canvas = tk.Canvas(
-        popup_root, 
-        width=50, 
-        height=30, 
-        bg="#272736", 
-        highlightthickness=0
-    )
-    canvas.pack()
-    
-    return canvas
 
 def create_input_text(popup, bg_color):
     return tk.Entry(
@@ -74,7 +69,7 @@ def create_input_text(popup, bg_color):
         highlightcolor=BORDER_COLOR
     )
 
-def create_action_button(frame, text, bg_color):
+def create_action_button(frame, text, bg_color, command):
     return tk.Button(
         frame,
         bg=bg_color,
@@ -83,7 +78,8 @@ def create_action_button(frame, text, bg_color):
         fg=BORDER_COLOR,
         relief="solid",
         bd=1.5,
-        width=15
+        width=15,
+        command=command
     )
 
 def add_input_placeholder(input_entry, placeholder):
