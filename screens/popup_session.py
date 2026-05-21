@@ -5,6 +5,8 @@ from actions.create_session import start_study_session
 from screens.popup import Popup
 from PIL import Image, ImageTk
 
+from utils.registre import create_new_session
+
 pyglet.font.add_file("assets/fonts/PixelifySans-Regular.ttf")
 pixelify_font = pyglet.font.load("Pixelify Sans").name
 
@@ -39,24 +41,25 @@ def display_create_popup():
     duration_input.pack(ipady=3)
     add_input_placeholder(duration_input, "Duration")
 
+    border_frame = tk.Frame(create_popup, bg=BORDER_COLOR)
+    border_frame.pack(pady=(20, 0), padx=(10, 0))
+
+
     def get_input_data():
         username = text_input.get()
         duration = duration_input.get()
 
-        print(f"{username} - {duration}")
+        save_session = create_new_session(username, duration)
 
-        return username, duration
-
-    border_frame = tk.Frame(create_popup, bg=BORDER_COLOR)
-    border_frame.pack(pady=(20, 0), padx=(10, 0))
+        if save_session:
+            # start_study_session(username)
+            create_popup.destroy()
 
     action_button = create_action_button(
         border_frame, "Create session", "#FFB697", 
         command=lambda:get_input_data()
     )
     action_button.pack(ipady=2)
-
-    return create_popup
 
 def get_input_text(input_text):
     username = input_text.get()

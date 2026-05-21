@@ -7,12 +7,12 @@ from cryptography.fernet import Fernet
 from actions.ecdh_key import convert_public_key_to_bytes, derive_secure_channel, deserialize_public_key_bytes, exchange_keys, generate_ecdh_key_pair, get_encrypted_group_key
 from actions.study_invite_link import StudyInviteLink
 
-def start_study_session(student_name, duration=60):
+def start_study_session(student_name):
     host_socket, port_number = create_host_socket()
     print(port_number)
 
     print(student_name)
-    print(duration)
+    # print(duration)
 
     # study_invite = create_study_invite(student_name, host_socket)
     group_key, group_cipher = open_study_session()
