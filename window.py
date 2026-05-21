@@ -17,7 +17,7 @@ game_state = {
 }
 
 menu_screen_map, menu_screen_sprites = load_menu_screen(game_state)
-study_room_map, study_room_sprites = load_study_room()
+study_room_map, study_room_sprites, collision_sprites = load_study_room()
 
 run = True
 clock = pygame.time.Clock()

@@ -1,1 +1,20 @@
-[]
+[
+    {
+        "session_id": "ab788175-2401-4898-ba72-23abce19df80",
+        "username": "ella11",
+        "duration": "120",
+        "date_time_creation": "2026-05-22T02:01:43.455261",
+        "position_x": 320,
+        "position_y": 320,
+        "character_sprite": "assets/sprites/mini-chair-sprite.png"
+    },
+    {
+        "session_id": "6780b9b3-25ee-4f99-9fc9-ee3377a2cf59",
+        "username": "ella11",
+        "duration": "60",
+        "date_time_creation": "2026-05-22T02:03:04.691910",
+        "position_x": 320,
+        "position_y": 320,
+        "character_sprite": "assets/sprites/mini-chair-sprite.png"
+    }
+]
