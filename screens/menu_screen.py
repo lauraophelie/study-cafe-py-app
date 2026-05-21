@@ -2,18 +2,19 @@ import pygame
 
 from game_objects.background import Map
 from game_objects.sprite import Sprite
+from screens.popup_session import display_create_popup
 
 sprite_img_path = "assets/menu_sprites/"
 window_map_path = "assets/map/"
 ui_sprites_path = "assets/ui/"
 
-def load_menu_screen():
+def load_menu_screen(game_state):
     menu_map = init_menu_map()
-    ui_elements = init_ui_elements()
+    ui_elements = init_ui_elements(game_state)
 
     return menu_map, ui_elements
 
-def init_ui_elements():
+def init_ui_elements(game_state):
     ui_objects_sprites = pygame.sprite.Group()
 
     logo_app = pygame.image.load(f"{ui_sprites_path}study-cafe-logo.png").convert_alpha()
@@ -21,8 +22,11 @@ def init_ui_elements():
     join_button = pygame.image.load(f"{ui_sprites_path}join_button.png").convert_alpha()
     exit_button = pygame.image.load(f"{ui_sprites_path}exit_button.png").convert_alpha()
 
+    def start_study_session():
+        return display_create_popup(game_state)
+
     logo = Sprite(logo_app, 230, 70, test_callback, "logo")
-    start = Sprite(start_button, 225, 115, test_callback, "start_session", )
+    start = Sprite(start_button, 225, 115, start_study_session, "start_session", )
     join = Sprite(join_button, 225, 150, test_callback, "join_session", )
     exiting = Sprite(exit_button, 255, 195, test_callback, "exit")
 

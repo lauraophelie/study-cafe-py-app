@@ -5,6 +5,8 @@ from actions.create_session import start_study_session
 from screens.popup import Popup
 from PIL import Image, ImageTk
 
+from utils.registre import create_new_session
+
 pyglet.font.add_file("assets/fonts/PixelifySans-Regular.ttf")
 pixelify_font = pyglet.font.load("Pixelify Sans").name
 
@@ -15,7 +17,7 @@ BACKGROUND_COLOR = "#FFFFEB"
 
 FONT_PIXEL = (pixelify_font, 10)
 
-def display_create_popup():
+def display_create_popup(game_state):
     create_popup = Popup(
         popup_title="Start a study session", 
         popup_dimension="375x300", 
@@ -33,30 +35,31 @@ def display_create_popup():
 
     text_input = create_input_text(create_popup, BACKGROUND_COLOR)
     text_input.pack(ipady=2)
+    add_input_placeholder(text_input, "Username")
 
-    text_placeholder = "Enter your username here"
-    add_input_placeholder(text_input, text_placeholder)
+    duration_input = create_input_text(create_popup, BACKGROUND_COLOR)
+    duration_input.pack(ipady=3)
+    add_input_placeholder(duration_input, "Duration")
 
     border_frame = tk.Frame(create_popup, bg=BORDER_COLOR)
     border_frame.pack(pady=(20, 0), padx=(10, 0))
 
+
+    def get_input_data():
+        username = text_input.get()
+        duration = duration_input.get()
+
+        save_session = create_new_session(username, duration)
+
+        if save_session:
+            game_state["current_screen"] = "study_room"
+            create_popup.destroy() 
+
     action_button = create_action_button(
         border_frame, "Create session", "#FFB697", 
-        command=lambda:get_input_text(text_input)
+        command=lambda:get_input_data()
     )
     action_button.pack(ipady=2)
-
-    return create_popup
-
-def get_input_text(input_text):
-    username = input_text.get()
-
-    if username == "Enter your username here":
-        username = ""
-
-    print(username)
-    # start_study_session(username)
-
 
 def create_input_text(popup, bg_color):
     return tk.Entry(
