@@ -4,7 +4,6 @@ import uuid
 import datetime
 
 def create_new_session(username, duration):
-    print("here")
     try:
         new_session = {
             "session_id": str(uuid.uuid4()),

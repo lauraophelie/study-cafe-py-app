@@ -12,13 +12,15 @@ pygame.display.set_caption("Let's study together")
 root = tk.Tk()
 root.withdraw()
 
-menu_screen_map, menu_screen_sprites = load_menu_screen()
+game_state = {
+    "current_screen": "menu_screen"
+}
+
+menu_screen_map, menu_screen_sprites = load_menu_screen(game_state)
 study_room_map, study_room_sprites = load_study_room()
 
 run = True
 clock = pygame.time.Clock()
-
-current_screen = "menu_screen"
 
 while run:
     root.update()
@@ -28,14 +30,14 @@ while run:
         if event.type == pygame.QUIT:
             run = False
 
-    if current_screen == "menu_screen":
+    if game_state["current_screen"] == "menu_screen":
         menu_screen_map.render(window)
         menu_screen_sprites.update(events)
         menu_screen_sprites.draw(window)
-
-    # study_room_map.render(window)
-    # study_room_sprites.update(events)
-    # study_room_sprites.draw(window)
+    elif game_state["current_screen"] == "study_room":
+        study_room_map.render(window)
+        study_room_sprites.update(events)
+        study_room_sprites.draw(window)
 
     pygame.display.flip()
     clock.tick(60)

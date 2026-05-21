@@ -37,6 +37,7 @@ def create_study_invite(student_name, socket):
     )
 
 def create_host_socket():
+    print("create host socket")
     host_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     host_name = socket.gethostname()
     port_number = random.randint(1000, 5000)

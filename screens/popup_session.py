@@ -17,7 +17,7 @@ BACKGROUND_COLOR = "#FFFFEB"
 
 FONT_PIXEL = (pixelify_font, 10)
 
-def display_create_popup():
+def display_create_popup(game_state):
     create_popup = Popup(
         popup_title="Start a study session", 
         popup_dimension="375x300", 
@@ -52,24 +52,14 @@ def display_create_popup():
         save_session = create_new_session(username, duration)
 
         if save_session:
-            # start_study_session(username)
-            create_popup.destroy()
+            game_state["current_screen"] = "study_room"
+            create_popup.destroy() 
 
     action_button = create_action_button(
         border_frame, "Create session", "#FFB697", 
         command=lambda:get_input_data()
     )
     action_button.pack(ipady=2)
-
-def get_input_text(input_text):
-    username = input_text.get()
-
-    if username == "Enter your username here":
-        username = ""
-
-    print(username)
-    # start_study_session(username)
-
 
 def create_input_text(popup, bg_color):
     return tk.Entry(
