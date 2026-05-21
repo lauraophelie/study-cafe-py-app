@@ -6,6 +6,13 @@ from game_objects.sprite import Sprite
 sprite_img_path = "assets/sprite/"
 game_window_map = "assets/map/room_map.csv"
 
+def init_study_room():
+    sprites = init_background_sprites()
+    room_map = init_room_map(sprites, game_window_map)
+    game_objects_sprites = init_game_objects_sprites()
+
+    return room_map, game_objects_sprites
+
 def init_background_sprites(length=12):
     sprites = []
     for i in range(0, length):
