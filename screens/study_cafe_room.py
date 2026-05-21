@@ -2,6 +2,8 @@ import pygame
 
 from game_objects.background import Map
 from game_objects.sprite import Sprite
+from game_objects.student import Student
+from utils.registre import load_latest_session
 
 sprite_img_path = "assets/sprites/"
 game_window_map = "assets/map/room_map.csv"
@@ -10,6 +12,15 @@ def load_study_room():
     sprites = init_background_sprites()
     room_map = init_room_map(sprites, game_window_map)
     game_objects_sprites = init_game_objects_sprites()
+
+    session = load_latest_session()
+    if session:
+        student = Student(
+            image_path=session["character_sprite"],
+            x = session["position_x"],
+            y = session["position_y"]
+        )
+        game_objects_sprites.add(student)
 
     return room_map, game_objects_sprites
 
