@@ -1,4 +1,3 @@
-from tkinter import simpledialog
 
 import pygame
 import tkinter as tk

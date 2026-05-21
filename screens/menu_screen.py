@@ -5,7 +5,7 @@ from game_objects.sprite import Sprite
 
 sprite_img_path = "assets/menu_sprites/"
 window_map_path = "assets/map/"
-ui_sprites_path = "assets/ui"
+ui_sprites_path = "assets/ui/"
 
 def load_menu_screen():
     menu_map = init_menu_map()

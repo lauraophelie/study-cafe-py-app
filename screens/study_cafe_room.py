@@ -3,7 +3,7 @@ import pygame
 from game_objects.background import Map
 from game_objects.sprite import Sprite
 
-sprite_img_path = "assets/sprite/"
+sprite_img_path = "assets/sprites/"
 game_window_map = "assets/map/room_map.csv"
 
 def load_study_room():
@@ -13,7 +13,7 @@ def load_study_room():
 
     return room_map, game_objects_sprites
 
-def init_background_sprites(length=12):
+def init_background_sprites(length=13):
     sprites = []
     for i in range(0, length):
         image = pygame.image.load(f"{sprite_img_path + str(i)}.png").convert_alpha()
@@ -54,7 +54,7 @@ def init_game_objects_sprites():
     mini_chair_pos_y = 144
     mini_chair_pos_x = 448
 
-    for i in range(0, 2):
+    for i in range(0, 3):
         mini_chair = Sprite(small_chair, mini_chair_pos_x, mini_chair_pos_y, simple_callback, f"mini-chair-{i}")
         mini_chair_pos_x += 52
         all_objects_sprites.add(mini_chair)
