@@ -11,7 +11,7 @@ class StudyInviteLink:
         self.session_id = session_id
 
     def generate_invite_link(self, max_user=5):
-        link_data = self.process_invite_link_data(max_user=)
+        link_data = self.process_invite_link_data(max_user)
         return self.process_invite_link(link_data)
     
     def process_invite_link(self, link_data):
