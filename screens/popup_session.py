@@ -33,9 +33,11 @@ def display_create_popup():
 
     text_input = create_input_text(create_popup, BACKGROUND_COLOR)
     text_input.pack(ipady=2)
+    add_input_placeholder(text_input, "Username")
 
-    text_placeholder = "Enter your username here"
-    add_input_placeholder(text_input, text_placeholder)
+    duration_input = create_input_text(create_popup, BACKGROUND_COLOR)
+    duration_input.pack(ipady=3)
+    add_input_placeholder(duration_input, "Duration")
 
     border_frame = tk.Frame(create_popup, bg=BORDER_COLOR)
     border_frame.pack(pady=(20, 0), padx=(10, 0))
