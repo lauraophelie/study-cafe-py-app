@@ -1,6 +1,7 @@
 import pyglet
 import tkinter as tk
 
+from actions.create_session import start_study_session
 from screens.popup import Popup
 from PIL import Image, ImageTk
 
@@ -49,9 +50,12 @@ def display_create_popup():
 
 def get_input_text(input_text):
     username = input_text.get()
+
     if username == "Enter your username here":
         username = ""
+
     print(username)
+    # start_study_session(username)
 
 
 def create_input_text(popup, bg_color):
