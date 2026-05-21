@@ -18,6 +18,8 @@ study_room_map, study_room_sprites = load_study_room()
 run = True
 clock = pygame.time.Clock()
 
+current_screen = "menu_screen"
+
 while run:
     root.update()
     events = pygame.event.get()
@@ -26,13 +28,14 @@ while run:
         if event.type == pygame.QUIT:
             run = False
 
-    # menu_screen_map.render(window)
-    # menu_screen_sprites.update(events)
-    # menu_screen_sprites.draw(window)
+    if current_screen == "menu_screen":
+        menu_screen_map.render(window)
+        menu_screen_sprites.update(events)
+        menu_screen_sprites.draw(window)
 
-    study_room_map.render(window)
-    study_room_sprites.update(events)
-    study_room_sprites.draw(window)
+    # study_room_map.render(window)
+    # study_room_sprites.update(events)
+    # study_room_sprites.draw(window)
 
     pygame.display.flip()
     clock.tick(60)
