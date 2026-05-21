@@ -39,12 +39,20 @@ def display_create_popup():
     duration_input.pack(ipady=3)
     add_input_placeholder(duration_input, "Duration")
 
+    def get_input_data():
+        username = text_input.get()
+        duration = duration_input.get()
+
+        print(f"{username} - {duration}")
+
+        return username, duration
+
     border_frame = tk.Frame(create_popup, bg=BORDER_COLOR)
     border_frame.pack(pady=(20, 0), padx=(10, 0))
 
     action_button = create_action_button(
         border_frame, "Create session", "#FFB697", 
-        command=lambda:get_input_text(text_input)
+        command=lambda:get_input_data()
     )
     action_button.pack(ipady=2)
 
