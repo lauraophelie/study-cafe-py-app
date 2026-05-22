@@ -4,12 +4,13 @@ class Student(pygame.sprite.Sprite):
     def __init__(self, x, y, collision_sprites, speed=4):
         super().__init__()
         self.speed = speed
+        img_path = "assets/player_sprite/"
 
         self.images = {
-            "down": pygame.image.load("assets/sprites/mini-chair-sprite.png").convert_alpha(),
-            "up": pygame.image.load("assets/sprites/mini-chair-sprite.png").convert_alpha(),
-            "left": pygame.image.load("assets/sprites/mini-chair-sprite.png").convert_alpha(),
-            "right": pygame.image.load("assets/sprites/mini-chair-sprite.png").convert_alpha()
+            "down": pygame.image.load(f"{img_path}front.png").convert_alpha(),
+            "up": pygame.image.load(f"{img_path}up.png").convert_alpha(),
+            "left": pygame.image.load(f"{img_path}left.png").convert_alpha(),
+            "right": pygame.image.load(f"{img_path}right.png").convert_alpha()
         }
         self.direction = "down"
         self.image = self.images[self.direction]

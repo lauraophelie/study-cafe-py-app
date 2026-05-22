@@ -16,5 +16,14 @@
         "position_x": 320,
         "position_y": 320,
         "character_sprite": "assets/sprites/mini-chair-sprite.png"
+    },
+    {
+        "session_id": "3e0acf8f-bc63-4005-9b4c-b83f42e2cd96",
+        "username": "ella11",
+        "duration": "60",
+        "date_time_creation": "2026-05-22T03:21:54.273965",
+        "position_x": 320,
+        "position_y": 320,
+        "character_sprite": "assets/player_sprite/front.png"
     }
 ]
