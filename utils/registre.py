@@ -26,7 +26,7 @@ def create_new_session(username, duration):
             "date_time_creation": datetime.datetime.now().isoformat(),
             "position_x": 320,
             "position_y": 320,
-            "character_sprite": "assets/sprites/mini-chair-sprite.png"
+            "character_sprite": "assets/player_sprite/front.png"
         }
         register_path = 'register/register.json'
 

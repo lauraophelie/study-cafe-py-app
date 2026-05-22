@@ -11,18 +11,19 @@ game_window_map = "assets/map/room_map.csv"
 def load_study_room():
     sprites = init_background_sprites()
     room_map = init_room_map(sprites, game_window_map)
-    game_objects_sprites = init_game_objects_sprites()
+    game_objects_sprites, collisions_sprites = init_game_objects_sprites()
 
     session = load_latest_session()
     if session:
         student = Student(
-            image_path=session["character_sprite"],
             x = session["position_x"],
-            y = session["position_y"]
+            y = session["position_y"],
+            collision_sprites=collisions_sprites,
+            speed=3
         )
         game_objects_sprites.add(student)
 
-    return room_map, game_objects_sprites
+    return room_map, game_objects_sprites, collisions_sprites
 
 def init_background_sprites(length=13):
     sprites = []
@@ -44,6 +45,7 @@ def simple_callback():
 
 def init_game_objects_sprites():
     all_objects_sprites = pygame.sprite.Group()
+    collisions_sprites = pygame.sprite.Group()
 
     book_shelf_sprite = pygame.image.load(f"{sprite_img_path}book-shelf.png").convert_alpha()
     clock_sprite = pygame.image.load(f"{sprite_img_path}clock-sprite.png").convert_alpha()
@@ -61,6 +63,7 @@ def init_game_objects_sprites():
     counter = Sprite(counter_sprite, 432, 80, simple_callback, "counter")
 
     all_objects_sprites.add(couch, plant, book_shelf, clock, cafe_window, counter)
+    collisions_sprites.add(couch, plant, book_shelf, clock, cafe_window, counter)
 
     mini_chair_pos_y = 144
     mini_chair_pos_x = 448
@@ -69,5 +72,6 @@ def init_game_objects_sprites():
         mini_chair = Sprite(small_chair, mini_chair_pos_x, mini_chair_pos_y, simple_callback, f"mini-chair-{i}")
         mini_chair_pos_x += 52
         all_objects_sprites.add(mini_chair)
+        collisions_sprites.add(mini_chair)
 
-    return all_objects_sprites
+    return all_objects_sprites, collisions_sprites
