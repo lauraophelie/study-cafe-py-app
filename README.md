@@ -7,10 +7,11 @@ Study cafe is a game-styled study app, made in Python, that simulates the look o
 - Pixel art : aseprite
 - Library used (in python): fernet, json, socket, pygame, cryptography, tkinter, pyglet (to load fonts), pillow (for images)
 - Prototyping : Figma
+- Others : Lospec (https://lospec.com/) for the color palette
 
 ## 📂 Key concepts used
-- Socket programming 
-- Hybrid cryptography : asymetric & symetric cryptography both used to ensure a secure communication on a public channel
+- Socket programming : using socket to establish the connection between the server and the clients 
+- Hybrid cryptography : asymetric & symetric cryptography both used to ensure a secure communication on a public channel using the diffie-hellman exchange keys
 - Game development : displaying the sprite on the window, handling collisions, adding objetcs onto the background
 
 ## 📂 Key features
@@ -19,10 +20,15 @@ Study cafe is a game-styled study app, made in Python, that simulates the look o
 ### Joining a study session
 
 ## 📂 Process
+- The base idea was to make an app with a pixel-art styled UI where you could join your friends in the same "room" and you could study "together" or just study solo in a pretty room. 
+- To make it work, I then had the idea to split it into two (02) key features : one where the student could create / open a new study room (and later, they could invite their friend if wanted or just stay solo) and another where the student could just join another student by simply providing a link and an unique username
 
 ## 📂 Technical details
 
 ## 📂 Installation
+
+To run the project, you'll need to install the following elements : 
+- Python 3.10
 
 ## 📂 Usage
 
