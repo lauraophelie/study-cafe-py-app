@@ -30,7 +30,9 @@ The project started by simply writing down everything needed for the project : f
 
 Additional research were also made : inspirations pictures for the UI part, color palette, simple code such as implementing socket communication in python, how to use pygame, etc.
 
-For the UI part : a good chunk of hours were spent looking at inspirations pictures then drawing the assets in Aseprite following the chosen color palette but also following some tutorial found on the internet as it was my very first time doing pixel art.
+For the UI part : a good amount of time were spent looking at inspirations pictures then drawing the assets in Aseprite following the chosen color palette but also following some tutorial found on the internet as it was my very first time doing pixel art.
+
+Then, obviously, the rest of the time was dedicated to the coding part, running various tests and debugging. 
 
 ## 📂 Technical details
 
