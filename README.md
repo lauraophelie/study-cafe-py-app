@@ -22,13 +22,22 @@ Study cafe is a game-styled study app, made in Python, that simulates the look o
 ## 📂 Process
 - The base idea was to make an app with a pixel-art styled UI where you could join your friends in the same "room" and you could study "together" or just study solo in a pretty room. 
 - To make it work, I then had the idea to split it into two (02) key features : one where the student could create / open a new study room (and later, they could invite their friend if wanted or just stay solo) and another where the student could just join another student by simply providing a link and an unique username
+- The project started by simply writing down everything needed for the project : from the basic elements to the details of the two (02) core features of the app but also a basic sketch of the screens.
+- Additional research were also made : inspirations pictures for the UI part, color palette, simple code such as implementing socket communication in python, how to use pygame, etc.
 
 ## 📂 Technical details
 
 ## 📂 Installation
 
 To run the project, you'll need to install the following elements : 
-- Python 3.10
+- Python 3.10 (https://www.python.org/)
+- PIP (https://pip.pypa.io/en/stable/installation/)
+
+Once those two are installed and working properly, install the following packages by running the command : 
+
+```
+pip install ...
+```
 
 ## 📂 Usage
 
