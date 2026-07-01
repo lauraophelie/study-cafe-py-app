@@ -2,6 +2,8 @@
 
 Study cafe is a game-styled study app, made in Python, that simulates the look of a 'study cafe' where student can go order food and drink while also having a cozy, peaceful place to study with other people. The app contains various features such as a timer, some lofi music (for the music enjoyers), and a to-do list features to stay organized, a chat system. 
 
+**Project Status → 90% done** 
+
 ## 📂 Technologies & tools used
 - **Programming language :** python
 - **Tools use :** Figma for protyping, Aseprite for the pixel art
@@ -45,9 +47,6 @@ Once those two are installed and working properly, install the following package
 pip install ...
 ```
 
-## 📂 Usage
-
-## 📂 Licence
 
 ## 📂 Contact
 
