@@ -43,5 +43,14 @@
         "position_x": 320,
         "position_y": 320,
         "character_sprite": "assets/player_sprite/front.png"
+    },
+    {
+        "session_id": "0809af40-bb21-4282-b1f7-9af0a70072ed",
+        "username": "laura",
+        "duration": "2",
+        "date_time_creation": "2026-10-25T17:31:13.758487",
+        "position_x": 320,
+        "position_y": 320,
+        "character_sprite": "assets/player_sprite/front.png"
     }
 ]
